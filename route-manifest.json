@@ -1,0 +1,6 @@
+{
+  "routes": [
+    {"path":"/","title":"ComicCraft home"},
+    {"path":"/export-success","title":"Export success"}
+  ]
+}

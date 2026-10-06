@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Start a comic — ComicCraft{% endblock %}
+{% block content %}
+<main class="home-shell">
+  <section class="hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="eyebrow-number">01</span> Story spark → five panels</div>
+      <h1>Make the blank page <em>move.</em></h1>
+      <p class="hero-lede">Give us a character, a world, and one impossible idea. ComicCraft turns your brief into a cohesive mini-comic with narration, dialogue, and illustrated panels.</p>
+      <div class="hero-proof-row">
+        <div class="hero-proof"><strong>01</strong><span>Outline<br>Gemini Flash</span></div>
+        <div class="hero-proof"><strong>02</strong><span>Story<br>Gemini Pro</span></div>
+        <div class="hero-proof"><strong>03</strong><span>Illustrate<br>Stable Diffusion</span></div>
+      </div>
+    </div>
+    <div class="hero-swatch" aria-label="ComicCraft visual motif">
+      <div class="sunburst"></div>
+      <div class="hero-caption"><span>Issue 01</span><strong>Start<br>with a spark.</strong></div>
+      <div class="hero-sticker sticker-top">AI × STORY</div>
+      <div class="hero-sticker sticker-bottom">NO BAD IDEAS</div>
+      <div class="hero-panel-mark"><span>CC</span><i></i></div>
+    </div>
+  </section>
+
+  <section class="editor-layout">
+    <div class="brief-rail">
+      <div class="rail-heading"><span class="step-pill">01</span><div><span class="label">The brief</span><h2>Shape your scene</h2></div></div>
+      <p class="rail-copy">A few strong ingredients are all your story needs. The more specific the spark, the more surprising the page.</p>
+      <div class="rail-tips">
+        <div><span class="tip-icon">✦</span><span>Keep your hero consistent.</span></div>
+        <div><span class="tip-icon">↗</span><span>Choose a mood that changes the ink.</span></div>
+        <div><span class="tip-icon">▦</span><span>Every generation is a new issue.</span></div>
+      </div>
+    </div>
+    <form class="brief-form" action="/generate" method="post" data-generation-form>
+      {% if error_message %}<div class="error-state" role="alert"><strong>We hit a rough panel.</strong><span>{{ error_message }}</span></div>{% endif %}
+      <div class="form-field form-field-wide">
+        <label for="story_prompt">What happens?</label>
+        <textarea id="story_prompt" name="story_prompt" rows="4" required minlength="8" maxlength="800" placeholder="A brave fox discovers a door inside an ancient tree...">{{ (form_data.story_prompt if form_data else 'A brave fox discovers a door inside an ancient tree and must choose what to leave behind.') }}</textarea>
+        <div class="field-meta"><span>Start with a “what if?”</span><span data-count>0 / 800</span></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label for="character_name">Main character</label><input id="character_name" name="character_name" value="{{ form_data.character_name if form_data else 'Moxie' }}" required maxlength="40"><span class="input-suffix">hero / guide / wildcard</span></div>
+        <div class="form-field"><label for="setting">Setting</label><input id="setting" name="setting" value="{{ form_data.setting if form_data else 'an enchanted forest' }}" required maxlength="120"><span class="input-suffix">where the page opens</span></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label for="tone">Tone</label><select id="tone" name="tone"><option>Dramatic</option><option>Funny</option><option>Hopeful</option><option>Mysterious</option><option>Whimsical</option></select></div>
+        <div class="form-field"><label for="art_style">Art style</label><select id="art_style" name="art_style"><option>Comic book</option><option>Anime</option><option>Graphic novel</option><option>Retro pulp</option><option>Watercolor</option></select></div>
+      </div>
+      <div class="form-actions"><button class="primary-button" type="submit"><span class="button-icon">↗</span><span>Generate my comic</span><span class="button-arrow">→</span></button><span class="form-note">Five panels · usually under a minute</span></div>
+    </form>
+  </section>
+  <section class="example-strip"><span class="example-label">Need a spark?</span><button type="button" class="prompt-chip" data-example="A shy cloud learns to make rainbows over a city that forgot how to look up.">A shy cloud learns to make rainbows.</button><button type="button" class="prompt-chip" data-example="A retired astronaut opens a tiny bakery on the moon and gets one impossible customer.">A moon bakery gets one impossible customer.</button><button type="button" class="prompt-chip" data-example="A robot librarian finds a book that remembers every person who ever read it.">A robot librarian finds a remembering book.</button></section>
+</main>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7657FF">
+  <meta name="description" content="ComicCraft turns a story spark into a five-panel AI comic.">
+  <link rel="icon" href="/static/brand/comiccraft-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <title>{% block title %}ComicCraft — AI Comic Story Creator{% endblock %}</title>
+</head>
+<body class="page-body">
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="ComicCraft home">
+      <span class="brand-mark" aria-hidden="true"><img src="/static/brand/comiccraft-mark.svg" alt=""></span>
+      <span class="brand-wordmark">Comic<span>Craft</span></span>
+    </a>
+    <div class="header-note"><span class="signal-dot"></span> Gemini-powered story studio</div>
+  </header>
+  {% block content %}{% endblock %}
+  <footer class="site-footer">
+    <span>ComicCraft / Issue 01</span>
+    <span>Made for the next page.</span>
+  </footer>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

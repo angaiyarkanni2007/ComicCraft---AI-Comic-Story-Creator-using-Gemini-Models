@@ -1,0 +1,5 @@
+# Optional: install only when DIFFUSERS_ENABLED=1 is needed.
+diffusers==0.32.2
+transformers==4.48.3
+accelerate==1.3.0
+torch==2.5.1
